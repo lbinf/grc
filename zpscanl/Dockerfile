@@ -6,8 +6,8 @@ RUN apk add gcc g++ make cmake
 RUN git clone https://github.com/niudaii/zpscan  && mv zpscan  /zpscan-src
 WORKDIR /zpscan-src
 #COPY . /zpscan-src
-RUN go mod download && \
-    make docker && \
-    mv ./bin/zpscan-docker /zpscan
+RUN go mod download && go build main.go -o /zpscan
+#    make docker && \
+#    mv ./bin/zpscan-docker /zpscan
     
  ENTRYPOINT ["/zpscan"]   
