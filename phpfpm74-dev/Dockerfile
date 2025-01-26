@@ -39,7 +39,9 @@ RUN docker-php-ext-install \
     && pecl install redis && docker-php-ext-enable redis
 
 # 安装 Xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN #pecl install xdebug && docker-php-ext-enable xdebug
+
+RUN pecl install xdebug-3.0.4 && docker-php-ext-enable xdebug
 
 # 配置 Xdebug
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
