@@ -47,11 +47,11 @@ RUN pecl install xdebug-3.0.4 && docker-php-ext-enable xdebug
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # 安装 phptrace
-RUN git clone https://github.com/Qihoo360/phptrace.git /tmp/phptrace && \
-    cd /tmp/phptrace && \
-    /usr/local/bin phpize ./configure --with-php-config=/usr/local/bin/php-config && \
-    make && make cli && make install all && \
-    echo "extension=trace.so" > /usr/local/etc/php/conf.d/phptrace.ini
+RUN git clone https://github.com/Qihoo360/phptrace.git ~/phptrace
+#    cd /tmp/phptrace && \
+#    /usr/local/bin phpize ./configure --with-php-config=/usr/local/bin/php-config && \
+#    make && make cli && make install all && \
+#    echo "extension=trace.so" > /usr/local/etc/php/conf.d/phptrace.ini
 
 # 下载并安装 swoole_loader74
 #RUN wget https://example.com/path/to/swoole_loader74.so -O /usr/local/lib/php/extensions/no-debug-non-zts-20190902/swoole_loader74.so && \
