@@ -60,7 +60,7 @@ COPY swoole_loader74.so    /usr/local/etc/php/conf.d/swoole_loader74.so
 RUN  echo "extension=swoole_loader74.so" > /usr/local/etc/php/conf.d/swoole_loader.ini
 
 # 安装 tcpdump
-RUN setcap cap_net_raw+ep /usr/sbin/tcpdump
+RUN apt install -y libcap2-bin && setcap cap_net_raw+ep /usr/sbin/tcpdump
 
 # 安装并配置 Opcache GUI
 RUN git clone https://github.com/amnuts/opcache-gui.git /var/www/html/opcache-gui
