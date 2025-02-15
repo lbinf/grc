@@ -20,6 +20,8 @@ ENV UV_COMPILE_BYTECODE=1
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#caching
 ENV UV_LINK_MODE=copy
 
+RUN cd ~ && git clone https://github.com/fastapi/full-stack-fastapi-template.git fastapi && cp -rf ~/fastapi/backend/* /app/ && cd /app 
+
 # Install dependencies
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -34,7 +36,7 @@ ENV PYTHONPATH=/app
 #COPY ./pyproject.toml ./uv.lock ./alembic.ini /app/
 
 #COPY ./app /app/app
-RUN cd ~ && git clone https://github.com/fastapi/full-stack-fastapi-template.git fastapi && cp -rf ~/fastapi/backend/* /app/ && cd /app   
+  
 # Sync the project
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
 RUN --mount=type=cache,target=/root/.cache/uv \
