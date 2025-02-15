@@ -20,7 +20,8 @@ ENV UV_COMPILE_BYTECODE=1
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#caching
 ENV UV_LINK_MODE=copy
 
-RUN git clone https://github.com/fastapi/full-stack-fastapi-template.git fastapi && cp -rf fastapi/backend/* /app/
+RUN git clone https://github.com/fastapi/full-stack-fastapi-template.git fastapi \
+    && cp -rf fastapi/backend/* /app/ && cp pyproject.toml /pyproject.toml && cp uv.lock /uv.lock
 
 # Install dependencies
 # Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
